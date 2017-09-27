@@ -8,10 +8,36 @@
             <class name="com.saucelabs.example.WikiTest" />
         </classes>
     </test>
-    <!--<test name="Test 2">-->
-        <!--<parameter name="browser" value="Samsung_Galaxy_S5_real" />-->
+    <test name="Test 2">
+        <parameter name="browserName" value="firefox" />
+        <parameter name="browserVersion" value="54.0" />
+        <parameter name="os" value="Windows 7" />
+        <classes>
+            <class name="com.saucelabs.example.WikiTest" />
+        </classes>
+    </test>
+    <!--<test name="Test 3">-->
+        <!--<parameter name="browserName" value="safari" />-->
+        <!--<parameter name="browserVersion" value="10.0" />-->
+        <!--<parameter name="os" value="macOS 10.12" />-->
         <!--<classes>-->
             <!--<class name="com.saucelabs.example.WikiTest" />-->
         <!--</classes>-->
     <!--</test>-->
+    <test name="Test 4">
+        <parameter name="browserName" value="chrome" />
+        <parameter name="browserVersion" value="61.0" />
+        <parameter name="os" value="Windows 8" />
+        <classes>
+            <class name="com.saucelabs.example.WikiTest" />
+        </classes>
+    </test>
+    <test name="Test 5">
+        <parameter name="browserName" value="chrome" />
+        <parameter name="browserVersion" value="61.0" />
+        <parameter name="os" value="Windows 7" />
+        <classes>
+            <class name="com.saucelabs.example.WikiTest" />
+        </classes>
+    </test>
 </suite>

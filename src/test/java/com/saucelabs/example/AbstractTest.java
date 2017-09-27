@@ -10,13 +10,15 @@ import org.testng.annotations.Parameters;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by grago on 27.09.17.
  */
 public class AbstractTest {
 
-    protected WebDriver driver;
+    private WebDriver driver;
+    protected Wikipedia wikipedia;
 
     @BeforeMethod
     @Parameters({ "browserName", "browserVersion", "os" })
@@ -39,6 +41,12 @@ public class AbstractTest {
 
         driver = new RemoteWebDriver(new URL("https://" + username+ ":" + accessKey + "@ondemand.saucelabs.com/wd/hub"),
                 capabilities);
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        wikipedia = new Wikipedia(driver);
+
+
+        driver.get("https://wikipedia.org");
 
     }
 

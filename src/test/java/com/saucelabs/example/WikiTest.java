@@ -1,17 +1,19 @@
 package com.saucelabs.example;
 
-import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class WikiTest extends AbstractTest {
 
     @Test
-    public void wikiTest() {
-        driver.get("https://wikipedia.org");
+    public void seleniumWikiTest() {
 
-        driver.findElement(By.id("searchInput")).sendKeys("Selenium (software)");
-        driver.findElement(By.cssSelector("button.pure-button.pure-button-primary-progressive")).click();
-        driver.findElement(By.cssSelector("a.external.text")).click();
+        wikipedia.homePage().performSearch("Selenium (software)");
+        wikipedia.frontPage().navigateToLogin();
+        wikipedia.loginPage().performLogin("sauce-example", "funkybob");
+        wikipedia.frontPage().performSearch("appium");
+        wikipedia.articlePage().navigateToPageByLinkTitle("Test automation");
+        Assert.assertTrue(wikipedia.articlePage().isLinkShown("Continuous delivery"));
 
     }
 
