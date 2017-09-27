@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Test-class Suite" parallel="tests" thread-count="2">
+    <test name="Test 1">
+        <parameter name="browserName" value="MicrosoftEdge" />
+        <parameter name="browserVersion" value="14.14393" />
+        <parameter name="os" value="Windows 10" />
+        <classes>
+            <class name="com.saucelabs.example.WikiTest" />
+        </classes>
+    </test>
+    <!--<test name="Test 2">-->
+        <!--<parameter name="browser" value="Samsung_Galaxy_S5_real" />-->
+        <!--<classes>-->
+            <!--<class name="com.saucelabs.example.WikiTest" />-->
+        <!--</classes>-->
+    <!--</test>-->
+</suite>
