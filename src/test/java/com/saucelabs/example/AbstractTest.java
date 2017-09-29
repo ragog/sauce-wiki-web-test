@@ -1,9 +1,11 @@
 package com.saucelabs.example;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
@@ -54,7 +56,8 @@ public class AbstractTest {
     }
 
     @AfterMethod
-    public void teardown() {
+    public void teardown(ITestResult result) {
+        ((JavascriptExecutor) driver).executeScript("sauce:job-result=" + (result.isSuccess() ? "passed" : "failed"));
         driver.quit();
         System.out.println("driver.quit() executed");
     }
