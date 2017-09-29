@@ -13,17 +13,16 @@ public class ArticlePage extends AbstractPage {
     }
 
     public void navigateToPageByLinkTitle(String title) {
-        driver.findElement(By.xpath("//a[@title='" + title + "']"));
+        driver.findElement(By.xpath("//a[@title='" + title + "']")).click();
     }
 
     public boolean isLinkShown(String title) {
         try {
-            driver.findElement(By.xpath("//a[@title='Continuous delivery']"));
+            driver.findElement(By.xpath("//a[@title='" + title + "']"));
             return true;
         } catch (Exception e) {
             return false;
         }
-
     }
 
 }

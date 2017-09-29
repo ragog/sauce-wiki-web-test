@@ -15,6 +15,9 @@ public class HomePage extends AbstractPage {
     @FindBy(css = "button.pure-button.pure-button-primary-progressive")
     private WebElement searchButton;
 
+    @FindBy(id = "js-link-box-en")
+    private WebElement englishWikiLink;
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -24,6 +27,8 @@ public class HomePage extends AbstractPage {
         searchButton.click();
     }
 
-
+    public void navigateToEnglishWikipedia() {
+        englishWikiLink.click();
+    }
 
 }

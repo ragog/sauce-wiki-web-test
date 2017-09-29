@@ -16,6 +16,9 @@ public class FrontPage extends AbstractPage {
     @FindBy(id = "searchInput")
     private WebElement searchBar;
 
+    @FindBy(id = "From_today.27s_featured_article")
+    private WebElement todayNewsHeader;
+
     public FrontPage(WebDriver driver) {
         super(driver);
     }
@@ -27,6 +30,10 @@ public class FrontPage extends AbstractPage {
     public void performSearch(String searchString) {
         searchBar.sendKeys(searchString);
         searchBar.sendKeys(Keys.ENTER);
+    }
+
+    public boolean isActive() {
+        return todayNewsHeader.isDisplayed();
     }
 
 }

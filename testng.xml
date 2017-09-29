@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Test-class Suite" parallel="tests" thread-count="2">
+<suite name="Test-class Suite" parallel="tests" thread-count="4">
     <test name="Test 1">
         <parameter name="browserName" value="MicrosoftEdge" />
         <parameter name="browserVersion" value="14.14393" />

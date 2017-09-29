@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -22,7 +23,9 @@ public class AbstractTest {
 
     @BeforeMethod
     @Parameters({ "browserName", "browserVersion", "os" })
-    public void setup(String browserName, String browserVersion, String os) throws MalformedURLException {
+    public void setup(String browserName, String browserVersion, String os, Method method) throws MalformedURLException {
+
+        String testName = method.getName();
 
         // Config from env variables
         String username = System.getenv("SAUCE_USERNAME");
@@ -34,6 +37,7 @@ public class AbstractTest {
         capabilities.setCapability(CapabilityType.BROWSER_NAME, browserName);
         capabilities.setCapability(CapabilityType.VERSION, browserVersion);
         capabilities.setCapability(CapabilityType.PLATFORM, os);
+        capabilities.setCapability("name", testName);
 
         if (buildTag != null) {
             capabilities.setCapability("build", buildTag);
@@ -45,7 +49,6 @@ public class AbstractTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         wikipedia = new Wikipedia(driver);
 
-
         driver.get("https://wikipedia.org");
 
     }
@@ -53,6 +56,7 @@ public class AbstractTest {
     @AfterMethod
     public void teardown() {
         driver.quit();
+        System.out.println("driver.quit() executed");
     }
 
 }
